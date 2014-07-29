@@ -30,25 +30,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>acktie</groupId>
-      <artifactId>acktie</artifactId>
-      <version>1.0</version>
-      <scope>system</scope>
-      <systemPath>${basedir}/lib/acktie.jar</systemPath>
-    </dependency>
-    <dependency>
       <groupId>android</groupId>
       <artifactId>android</artifactId>
       <version>1.0</version>
       <scope>system</scope>
       <systemPath>${basedir}/lib/android.jar</systemPath>
-    </dependency>
-    <dependency>
-      <groupId>core</groupId>
-      <artifactId>core</artifactId>
-      <version>1.0</version>
-      <scope>system</scope>
-      <systemPath>${basedir}/lib/core-3.1.0.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>kroll-common</groupId>
@@ -71,13 +57,12 @@
       <scope>system</scope>
       <systemPath>${basedir}/lib/zbar.jar</systemPath>
     </dependency>
-
   </dependencies>
 
   <properties>
 		<jdk.version>1.6</jdk.version>
 	</properties>
- 
+
 	<build>
 	<plugins>
 	  <plugin>

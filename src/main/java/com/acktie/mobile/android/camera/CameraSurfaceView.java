@@ -19,9 +19,6 @@ public class CameraSurfaceView extends SurfaceView implements
 	public CameraSurfaceView(Context context,
 			PreviewCallback cameraPreviewCallback, CameraManager cameraManager) {
 		super(context);
-
-		Log.e("--- CameraSurfaceView ---","initialized");
-
 		this.cameraPreviewCallback = cameraPreviewCallback;
 		this.cameraManager = cameraManager;
 		this.camera = cameraManager.getCamera();
@@ -76,7 +73,7 @@ public class CameraSurfaceView extends SurfaceView implements
 				previewHeight = 480;
 			}
 		}
-		Log.d(LCAT, "Setting camera size");
+		
 		Log.d(LCAT, "Setting Preview Size to: " + previewWidth + "x" + previewHeight);
 		parameters.setPreviewSize(previewWidth, previewHeight);
 		camera.setParameters(parameters);
@@ -86,25 +83,21 @@ public class CameraSurfaceView extends SurfaceView implements
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-
-		Log.e("--- CameraSurfaceView ---","surfaceCreated was called.");
-
 		try {
+
 			if(camera==null){
-				Log.e("--- CameraSurfaceView ---","there is no camera");
 				camera = cameraManager.getCamera();
 			}
 
-			// camera.setPreviewCallback(cameraPreviewCallback);
-			// camera.setPreviewDisplay(holder);
-		} catch (Exception e) {
+			camera.setPreviewCallback(cameraPreviewCallback);
+			camera.setPreviewDisplay(holder);
+		} catch (IOException e) {
 			Log.d("DBG", "Error setting camera preview: " + e.getMessage());
 		}
 	}
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder arg0) {
-		Log.e("--- CameraSurfaceView ---","destroyed camera");
 		cameraManager.stop();
 		camera = null;
 	}
